@@ -1,4 +1,4 @@
-# Original project : sabyasachibiswal https://github.com/sabyasachibiswal/angular5-social-login
+# Original project : high54 https://github.com/high54/angular-6-social-login
 
 
 Social login api for Angular 6. Includes Facebook, Google login, Linkedin, Vkontakte. 
@@ -14,7 +14,7 @@ Social login api for Angular 6. Includes Facebook, Google login, Linkedin, Vkont
 ### Install via npm 
 
 ```sh
-npm install --save angular-6-social-login
+npm install --save angular-6-social-login-v2
 ```
 
 ### Import the module
@@ -88,7 +88,7 @@ import {
     FacebookLoginProvider,
     GoogleLoginProvider,
     VkontakteLoginProvider
-} from 'angular-6-social-login';
+} from 'angular-6-social-login-v2';
 
 @Component({
   selector: 'app-signin',

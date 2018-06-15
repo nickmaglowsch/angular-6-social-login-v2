@@ -16,6 +16,9 @@
     "ng6",
     "angular social login",
     "angular facebook login",
+    "angular vkontakte login",
+    "angular вконтакте",
+    "angular vk login",
     "angular google login",
     "angular 6 social login",
     "angular6 social login",
@@ -28,13 +31,16 @@
     "social-login",
     "google-authentication",
     "angular-google-authentication",
+    "vk open api",
+    "вконтакте open api",
+    "vk-authentication",
     "facebook-authentication",
     "angular-facebook-authentication",
     "angular module"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/high54/angular-6-social-login/issues"
+    "url": "https://github.com/askidmobile/angular-6-social-login-v2/issues"
   },
   "main": "angular-6-social-login.umd.js",
   "module": "angular-6-social-login.js",
