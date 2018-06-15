@@ -30,7 +30,8 @@ import {
     GoogleLoginProvider,
     FacebookLoginProvider,
     LinkedinLoginProvider,
-} from "angular-6-social-login";
+    VkontakteLoginProvider,
+} from "angular-6-social-login-v2";
 
 
 // Configs 
