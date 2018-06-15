@@ -54,6 +54,20 @@ export class LinkedinLoginProvider extends BaseLoginProvider {
     return user;
   }
 
+  getStatus(): Promise<SocialUser> {
+      return new Promise((resolve, reject) => {
+          IN.Event.on(IN, 'auth', () => {
+              if (IN.User.isAuthorized()) {
+                  IN.API.Raw(
+                      '/people/~:(id,first-name,last-name,email-address,picture-url)'
+                  ).result( (res: LinkedInResponse) => {
+                      resolve(this.drawUser(res));
+                  });
+              }
+          });
+      });
+  }
+
   signIn(): Promise<SocialUser> {
     return new Promise((resolve, reject) => {
       IN.User.authorize( () => {

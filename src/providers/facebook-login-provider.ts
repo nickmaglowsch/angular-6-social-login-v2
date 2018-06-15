@@ -25,6 +25,7 @@ export class FacebookLoginProvider extends BaseLoginProvider {
             xfbml: true,
             version: 'v2.10'
           });
+
           FB.AppEvents.logPageView();
 
           FB.getLoginStatus(function (response: any) {
@@ -35,6 +36,7 @@ export class FacebookLoginProvider extends BaseLoginProvider {
               });
             }
           });
+
         });
     });
   }
@@ -47,6 +49,19 @@ export class FacebookLoginProvider extends BaseLoginProvider {
     user.token = response.token;
     user.image = 'https://graph.facebook.com/' + response.id + '/picture?type=normal';
     return user;
+  }
+
+  getStatus(): Promise<SocialUser> {
+      return new Promise((resolve, reject) => {
+          FB.getLoginStatus(function (response: any) {
+              if (response.status === 'connected') {
+                  const accessToken = FB.getAuthResponse()['accessToken'];
+                  FB.api('/me?fields=name,email,picture', (res: any) => {
+                      resolve(FacebookLoginProvider.drawUser(Object.assign({}, {token: accessToken}, res)));
+                  });
+              }
+          });
+      });
   }
 
   signIn(): Promise<SocialUser> {

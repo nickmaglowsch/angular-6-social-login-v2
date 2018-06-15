@@ -1,7 +1,7 @@
 # Original project : sabyasachibiswal https://github.com/sabyasachibiswal/angular5-social-login
 
 
-Social login api for Angular 6. Includes Facebook, Google login and Linkedin. 
+Social login api for Angular 6. Includes Facebook, Google login, Linkedin, Vkontakte. 
 
 ![Generic badge](https://img.shields.io/badge/build-passing-green.svg)
 ![Generic badge](https://img.shields.io/badge/Angular-6-green.svg)
@@ -45,6 +45,10 @@ export function getAuthServiceConfigs() {
           id: GoogleLoginProvider.PROVIDER_ID,
 	      provider: new GoogleLoginProvider("Your-Google-Client-Id")
         },
+        {
+          id: VkontakteLoginProvider.PROVIDER_ID,
+	      provider: new VkontakteLoginProvider("Your-VK-Client-Id")
+        },        
           {
             id: LinkedinLoginProvider.PROVIDER_ID,
             provider: new LinkedinLoginProvider("1098828800522-m2ig6bieilc3tpqvmlcpdvrpvn86q4ks.apps.googleusercontent.com")
@@ -82,7 +86,8 @@ import {Component, OnInit} from '@angular/core';
 import {
     AuthService,
     FacebookLoginProvider,
-    GoogleLoginProvider
+    GoogleLoginProvider,
+    VkontakteLoginProvider
 } from 'angular-6-social-login';
 
 @Component({
@@ -104,7 +109,10 @@ export class SigninComponent implements OnInit {
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     } else if (socialPlatform == "linkedin") {
       socialPlatformProvider = LinkedinLoginProvider.PROVIDER_ID;
+    } else if (socialPlatform == "vkontakte") {
+      socialPlatformProvider = LinkedinLoginProvider.PROVIDER_ID;
     }
+    
     
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
@@ -129,7 +137,8 @@ In `signin.component.html`,
 </h1>
 
 <button (click)="socialSignIn('facebook')">Sign in with Facebook</button>
-<button (click)="socialSignIn('google')">Sign in with Google</button>              
+<button (click)="socialSignIn('google')">Sign in with Google</button>
+<button (click)="socialSignIn('vkontakte')">Sign in with VKontakte</button>              
 ```
 
 
@@ -143,4 +152,10 @@ Add `Facebook login` under products and configure `Valid OAuth redirect URIs`.
 
 Follow this official documentation on how to [
 Create a Google API Console project and client ID](https://developers.google.com/identity/sign-in/web/devconsole-project).
+
+### Vkontakte Open API :
+
+Follow this official documentation on how to [Open API work documentation](https://vk.com/dev/openapi)
+
+For use you need [create Standalone app](https://vk.com/editapp?act=create) and then set configuration Open API: `ON`.
 

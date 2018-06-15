@@ -49,6 +49,22 @@ export class AuthService {
     });
   }
 
+  getStatus(providerId: string): Promise<SocialUser> {
+      return new Promise((resolve, reject) => {
+          let providerObject = this.providers.get(providerId);
+          if (providerObject) {
+              providerObject.getStatus().then((user: SocialUser) => {
+                  user.provider = providerId;
+                  resolve(user);
+                  this._user = user;
+                  this._authState.next(user);
+              });
+          } else {
+              reject(AuthService.LOGIN_PROVIDER_NOT_FOUND);
+          }
+      });
+  }
+
   signIn(providerId: string): Promise<SocialUser> {
     return new Promise((resolve, reject) => {
       let providerObject = this.providers.get(providerId);

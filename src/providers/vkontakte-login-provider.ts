@@ -23,7 +23,7 @@ export class VkontakteLoginProvider extends BaseLoginProvider {
                     apiId: this.clientId
                 });
 
-                VK.Auth.login( function(response: any){
+                VK.Auth.getLoginStatus( function(response: any){
                     if (response.status === 'connected') {
                         VK.Api.call('users.get', {user_id: response.session.mid, fields: 'photo_max,contacts', v: '5.78'},
                              (res: any) => {
@@ -33,6 +33,7 @@ export class VkontakteLoginProvider extends BaseLoginProvider {
                         );
                     }
                 });
+
             });
         });
     }
@@ -45,6 +46,21 @@ export class VkontakteLoginProvider extends BaseLoginProvider {
         user.token = response.token;
         return user;
     }
+
+    getStatus(): Promise<SocialUser> {
+        return new Promise<SocialUser>( (resolve, reject) => {
+            VK.Auth.getLoginStatus(function (response: any) {
+                if (response.status === 'connected') {
+                    VK.Api.call('users.get', {user_id: response.session.mid, fields: 'photo_max,contacts', v: '5.78'},
+                        (res: any) => {
+                            resolve(VkontakteLoginProvider.drawUser(Object.assign({}, {token: response.session.sig}, res.response[0])));
+
+                        }
+                    );
+                }
+            });
+        });
+    };
 
     signIn(): Promise<SocialUser> {
         return new Promise<SocialUser>( (resolve, reject) => {

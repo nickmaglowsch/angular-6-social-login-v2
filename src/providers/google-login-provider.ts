@@ -48,6 +48,18 @@ export class GoogleLoginProvider extends BaseLoginProvider {
     return user;
   }
 
+  getStatus(): Promise<SocialUser> {
+      return new Promise((resolve, reject) => {
+          this.loadScript(this.loginProviderObj, () => {
+                  this.auth2.then(() => {
+                      if (this.auth2.isSignedIn.get()) {
+                          resolve(this.drawUser());
+                      }
+                  });
+          });
+      });
+  }
+
   signIn(): Promise<SocialUser> {
     return new Promise((resolve, reject) => {
       let promise = this.auth2.signIn();

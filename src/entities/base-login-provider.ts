@@ -5,6 +5,7 @@ export abstract class BaseLoginProvider implements LoginProvider {
   constructor() {}
 
   abstract initialize(): Promise<SocialUser>;
+  abstract getStatus(): Promise<SocialUser>;
   abstract signIn(): Promise<SocialUser>;
   abstract signOut(): Promise<any>;
 
