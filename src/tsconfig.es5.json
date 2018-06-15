@@ -21,8 +21,8 @@
     "annotateForClosureCompiler": true,
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
-    "flatModuleOutFile": "angular-6-social-login.js",
-    "flatModuleId": "angular-6-social-login"
+    "flatModuleOutFile": "angular-6-social-login-v2.js",
+    "flatModuleId": "angular-6-social-login-v2"
   },
   "files": [
     "./index.ts"

@@ -1,6 +1,6 @@
 {
-  "name": "angular-6-social-login",
-  "version": "1.1.2",
+  "name": "angular-6-social-login-v2",
+  "version": "1.0.0",
   "description": "Agular 6 : Social Login (Facebook, Google, Vkontakte and LinkedIn)",
   "scripts": {
     "build": "gulp build",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/high54/angular-6-social-login"
+    "url": "https://github.com/askidmobile/angular-6-social-login-v2.git"
   },
   "author": {
     "name": "Anton Pavlov",
@@ -25,6 +25,9 @@
     "ng6",
     "angular social login",
     "angular facebook login",
+    "angular vkontakte login",
+    "angular вконтакте",
+    "angular vk login",
     "angular google login",
     "angular 6 social login",
     "angular6 social login",
@@ -37,13 +40,16 @@
     "social-login",
     "google-authentication",
     "angular-google-authentication",
+    "vk open api",
+    "вконтакте open api",
+    "vk-authentication",
     "facebook-authentication",
     "angular-facebook-authentication",
     "angular module"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/high54/angular-6-social-login/issues"
+    "url": "https://github.com/askidmobile/angular-6-social-login-v2/issues"
   },
   "devDependencies": {
     "@angular/common": "^4.0.0",
