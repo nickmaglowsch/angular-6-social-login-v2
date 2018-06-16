@@ -156,7 +156,7 @@ Create a Google API Console project and client ID](https://developers.google.com
 
 ### Vkontakte Open API :
 
-Follow this official documentation on how to [Open API work documentation](https://vk.com/dev/openapi)
+Follow this official documentation on how to [Open API work](https://vk.com/dev/openapi)
 
 For use you need [create Standalone app](https://vk.com/editapp?act=create) and then set configuration Open API: `ON`.
 
