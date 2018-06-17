@@ -1,0 +1,93 @@
+{
+  "name": "angular-6-social-login-v2",
+  "version": "1.0.2",
+  "description": "Agular 6 : Social Login (Facebook, Google, Vkontakte and LinkedIn)",
+  "scripts": {
+    "build": "gulp build",
+    "build:watch": "gulp",
+    "docs": "npm run docs:build",
+    "docs:build": "compodoc -p tsconfig.json -n ng4-social-login -d docs --hideGenerator",
+    "docs:serve": "npm run docs:build -- -s",
+    "docs:watch": "npm run docs:build -- -s -w",
+    "lint": "tslint --type-check  src/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/askidmobile/angular-6-social-login-v2.git"
+  },
+  "author": {
+    "name": "Anton Pavlov",
+    "email": "askid.mobile@gmail.com"
+  },
+  "keywords": [
+    "angular",
+    "angular6",
+    "ng6",
+    "angular social login",
+    "angular facebook login",
+    "angular vkontakte login",
+    "angular вконтакте",
+    "angular vk login",
+    "angular google login",
+    "angular 6 social login",
+    "angular6 social login",
+    "social authentication",
+    "angular social authentication",
+    "angular-social-login",
+    "angular6-social-login",
+    "angular-6-social-login",
+    "social-authentication",
+    "social-login",
+    "google-authentication",
+    "angular-google-authentication",
+    "vk open api",
+    "вконтакте open api",
+    "vk-authentication",
+    "facebook-authentication",
+    "angular-facebook-authentication",
+    "angular module"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/askidmobile/angular-6-social-login-v2/issues"
+  },
+  "devDependencies": {
+    "@angular/common": "^4.0.0",
+    "@angular/compiler": "^4.0.0",
+    "@angular/compiler-cli": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "@angular/platform-browser": "^4.0.0",
+    "@angular/platform-browser-dynamic": "^4.0.0",
+    "@compodoc/compodoc": "^1.0.0-beta.10",
+    "@types/jasmine": "2.5.38",
+    "@types/node": "^6.0.113",
+    "codelyzer": "~2.0.0",
+    "core-js": "^2.4.1",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-rollup": "^2.11.0",
+    "jasmine-core": "~2.5.2",
+    "jasmine-spec-reporter": "~3.2.0",
+    "karma": "~1.4.1",
+    "karma-chrome-launcher": "~2.0.0",
+    "karma-cli": "~1.0.1",
+    "karma-coverage-istanbul-reporter": "^0.2.0",
+    "karma-jasmine": "~1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "node-sass": "^4.5.2",
+    "node-sass-tilde-importer": "^1.0.0",
+    "node-watch": "^0.5.2",
+    "protractor": "^5.3.2",
+    "rollup": "^0.41.6",
+    "run-sequence": "^1.2.2",
+    "rxjs": "^5.1.0",
+    "ts-node": "~2.0.0",
+    "tslint": "~4.5.0",
+    "typescript": "^2.9.2",
+    "zone.js": "^0.8.4"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  }
+}
