@@ -18,50 +18,52 @@ export class FacebookLoginProvider extends BaseLoginProvider {
   initialize(): Promise<SocialUser> {
     return new Promise((resolve, reject) => {
       this.loadScript(this.loginProviderObj, () => {
-          FB.init({
-            appId: this.clientId,
-            autoLogAppEvents: true,
-            cookie: true,
-            xfbml: true,
-            version: 'v2.10'
-          });
-
-          FB.AppEvents.logPageView();
-
-          FB.getLoginStatus(function (response: any) {
-            if (response.status === 'connected') {
-              const accessToken = FB.getAuthResponse()['accessToken'];
-              FB.api('/me?fields=name,email,picture', (res: any) => {
-                resolve(FacebookLoginProvider.drawUser(Object.assign({}, {token: accessToken}, res)));
-              });
-            }
-          });
-
+        FB.init({
+          appId: this.clientId,
+          autoLogAppEvents: true,
+          cookie: true,
+          xfbml: true,
+          version: 'v3.0'
         });
+
+        FB.AppEvents.logPageView();
+
+        FB.getLoginStatus(function (response: any) {
+          if (response.status === 'connected') {
+            const accessToken = FB.getAuthResponse()['accessToken'];
+            FB.api('/me?fields=id,name,email,birthday,gender,accessToken', (res: any) => {
+              resolve(res);
+            });
+          }
+        });
+
+      });
     });
   }
 
-  static drawUser(response: any): SocialUser {
-    let user: SocialUser = new SocialUser();
-    user.id = response.id;
-    user.name = response.name;
-    user.email = response.email;
-    user.token = response.token;
-    user.image = 'https://graph.facebook.com/' + response.id + '/picture?type=normal';
+  drawUser(response: any) {
+    let user = {
+      id: response.id,
+      name: response.name,
+      email: response.email,
+      token: response.token,
+      birthday: response.birthday,
+      gender: response.gender
+    }
     return user;
   }
 
   getStatus(): Promise<SocialUser> {
-      return new Promise((resolve, reject) => {
-          FB.getLoginStatus(function (response: any) {
-              if (response.status === 'connected') {
-                  const accessToken = FB.getAuthResponse()['accessToken'];
-                  FB.api('/me?fields=name,email,picture', (res: any) => {
-                      resolve(FacebookLoginProvider.drawUser(Object.assign({}, {token: accessToken}, res)));
-                  });
-              }
+    return new Promise((resolve, reject) => {
+      FB.getLoginStatus(function (response: any) {
+        if (response.status === 'connected') {
+          const accessToken = FB.getAuthResponse()['accessToken'];
+          FB.api('/me?fields=id,name,email,birthday,gender,accessToken', (res: any) => {
+            resolve(res);
           });
+        }
       });
+    });
   }
 
   signIn(): Promise<SocialUser> {
@@ -69,8 +71,8 @@ export class FacebookLoginProvider extends BaseLoginProvider {
       FB.login((response: any) => {
         if (response.authResponse) {
           const accessToken = FB.getAuthResponse()['accessToken'];
-          FB.api('/me?fields=name,email,picture', (res: any) => {
-            resolve(FacebookLoginProvider.drawUser(Object.assign({}, {token: accessToken}, res)));
+          FB.api('/me?fields=id,name,email,birthday,gender,accessToken', (res: any) => {
+            resolve(res);
           });
         }
       }, { scope: 'email,public_profile' });
