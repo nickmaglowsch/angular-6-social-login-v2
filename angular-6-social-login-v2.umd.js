@@ -384,8 +384,8 @@ var FacebookLoginProvider = /** @class */ (function (_super) {
                 FB.AppEvents.logPageView();
                 FB.getLoginStatus(function (response) {
                     if (response.status === 'connected') {
-                        var /** @type {?} */ accessToken = FB.getAuthResponse()['accessToken'];
-                        FB.api('/me?fields=id,name,email,birthday,gender,accessToken', function (res) {
+                        //const accessToken = FB.getAuthResponse()['accessToken'];
+                        FB.api('/me?fields=id,name,email,birthday,gender', function (res) {
                             resolve(res);
                         });
                     }
