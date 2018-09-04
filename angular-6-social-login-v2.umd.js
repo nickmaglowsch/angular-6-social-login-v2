@@ -384,7 +384,6 @@ var FacebookLoginProvider = /** @class */ (function (_super) {
                 FB.AppEvents.logPageView();
                 FB.getLoginStatus(function (response) {
                     if (response.status === 'connected') {
-                        //const accessToken = FB.getAuthResponse()['accessToken'];
                         FB.api('/me?fields=id,name,email,birthday,gender', function (res) {
                             resolve(res);
                         });
@@ -422,8 +421,7 @@ var FacebookLoginProvider = /** @class */ (function (_super) {
         return new Promise(function (resolve, reject) {
             FB.getLoginStatus(function (response) {
                 if (response.status === 'connected') {
-                    var /** @type {?} */ accessToken = FB.getAuthResponse()['accessToken'];
-                    FB.api('/me?fields=id,name,email,birthday,gender,accessToken', function (res) {
+                    FB.api('/me?fields=id,name,email,birthday,gender', function (res) {
                         resolve(res);
                     });
                 }
@@ -440,8 +438,7 @@ var FacebookLoginProvider = /** @class */ (function (_super) {
         return new Promise(function (resolve, reject) {
             FB.login(function (response) {
                 if (response.authResponse) {
-                    var /** @type {?} */ accessToken = FB.getAuthResponse()['accessToken'];
-                    FB.api('/me?fields=id,name,email,birthday,gender,accessToken', function (res) {
+                    FB.api('/me?fields=id,name,email,birthday,gender', function (res) {
                         resolve(res);
                     });
                 }
